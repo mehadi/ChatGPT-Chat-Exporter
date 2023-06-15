@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "ChatGPT Chat Exporter",
+  "description": "Export your ChatGPT chat conversations to JSON format and view/download them easily.",
+  "version": "1.0",
+  "author": "@bdmehadih@gmail.com",
+  "background": {
+    "scripts": [
+      "popup.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*"
+      ],
+      "js": [
+        "content-script.js"
+      ],
+      "run_at": "document_end",
+      "css": [
+      ]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "http://*/",
+    "https://*/"
+  ],
+  "web_accessible_resources": [
+    "injection.js"
+  ],
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": "script-src 'self' https://cloudflare.com; object-src 'self'"
+}
